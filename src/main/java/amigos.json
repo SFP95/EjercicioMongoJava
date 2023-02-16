@@ -1,0 +1,74 @@
+//Colección artículos:
+db.articulos.drop();
+db.articulos.insert({código:1,denominación:"Portatil Acer", pvp: 500, categoría:"Informática", uv:10, stock: 20})
+db.articulos.insert({código:2,denominación:"Pala Pádel", pvp: 100, categoría:"Deportes", uv:5, stock: 30})
+db.articulos.insert({código:3,denominación:"Caja Lápices", pvp: 6, categoría:"Escritorio", uv:10, stock: 6})
+db.articulos.insert({código:4,denominación:"Marcadores", pvp: 10, categoría:"Escritorio", uv:20, stock: 19})
+db.articulos.insert({código:5,denominación:"Memoria 32GB", pvp: 120, categoría:"Informática", uv:8, stock: 10})
+db.articulos.insert({código:6,denominación:"Micro Intel", pvp: 150, categoría:"Informática", uv:4, stock: 10})
+db.articulos.insert({código:7,denominación:"Bolas Pádel", pvp: 5, categoría:"Deportes", uv:15, stock: 30})
+db.articulos.insert({código:8,denominación:"Falda Pádel", pvp: 15, categoría:"Deportes", uv:10, stock: 10})
+db.articulos.find()
+
+
+//-------------------------------------------------------
+//Creo colecciones emple y depart, cada elemento con su _id manual.
+//Colección emple, con 4 empleados.
+db.emple.drop();
+db.emple.insert({_id:'emp1',nombre:"Juan", salario:1000, fechaalta:"10/10/1999"})
+db.emple.insert({_id:'emp2',nombre:"Alicia", salario:1400, fechaalta:"07/08/2000", oficio: "Profesora"})
+db.emple.insert({_id:'emp3',nombre:"María Jesús", salario:1500, fechaalta: "05/01/2005", oficio: "Analista", comisión:100})
+db.emple.insert({_id:'emp4',nombre:"Alberto", salario:1100, fechaalta:"15/11/2001"})
+db.emple.find();
+
+//Colección depart con dos departamentos, asignamos los dos primeros //empleados al primer departamento, y al segundo el resto de emple
+db.depart.drop();
+db.depart.insert({_id:'dep1',nombre:"Informática",loc:'Madrid', emple:['emp1', 'emp2']})
+db.depart.insert({_id:'dep2',nombre:"Gestión",loc:'Talavera', emple:['emp3', 'emp4' ]})
+db.depart.find()
+
+-------------------------------------------------------
+--Colección Trabajadores
+db.trabajadores.drop();
+db.trabajadores.insert({nombre: {nomb:"Alicia",ape1:"Ramos", ape2:"Martín"},
+                        direccion: {población: "Madrid", calle : "Avda Toledo 10"},
+						salario: 1200,
+						oficios:["Profesora", "Analista"],
+						primas: [20,30,40],
+						edad:50
+						})
+						
+db.trabajadores.insert({nombre: {nomb:"Juan",ape1:"Gil", ape2:"Sánchez"},
+                        direccion: {población: "Madrid", calle : "Mayor 12"},
+						salario: 1400,
+						oficios:["Programador", "Analista"],
+						primas: [120,130,40],
+						edad: 30
+						})
+
+db.trabajadores.insert({nombre: {nomb:"Raquel",ape1:"García", ape2:"del Amo"},
+                        direccion: {población: "Toledo", calle : "Ocaña 22"},
+						salario: 1500,
+						oficios:["Profesor"],
+						primas: [60, 30, 80],
+						edad: 45
+						})
+db.trabajadores.insert({nombre: {nomb:"Fernando",ape1:"Romo", ape2:"Pérez"},
+                        direccion: {población: "Talavera", calle : "Las cañas 2"},
+						salario: 1300,
+						oficios:["Profesor", "Representante"],
+						edad: 43
+						})
+db.trabajadores.insert({nombre: {nomb:"María",ape1:"Suárez", ape2:"Verdes"},
+                        direccion: {población: "Toledo", calle : "Av Madrid 32"},
+						salario: 1600,
+						oficios:["Profesor", "Contable"],
+						primas: [30, 70, 80],
+						edad: 55
+						})	
+
+db.trabajadores.insert({nombre: {nomb:"Santiago",ape1:"Gómez", ape2:"Corregidor"},
+                        direccion: {población: "Toledo", calle : "Av Madrid 32"},
+						salario: 1600,
+						edad: 55
+						})
