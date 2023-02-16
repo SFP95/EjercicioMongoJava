@@ -1,10 +1,13 @@
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Filter;
 
 public class ConexionMongoJava {
     public static void main(String[] args) {
@@ -74,10 +77,24 @@ public class ConexionMongoJava {
         }
         colection.insertMany(listadocs);
 
-        //CONSUTAR DOCUMENTOS:
+        //CONSUTAR DOCUMENTOS: usando cursores he iteratorspara recorrer los primeros
+        MongoCursor<Document> cursor= colection.find().iterator();
+        while(cursor.hasNext()){
+            Document doc = cursor.next();
+            System.out.println(doc.toJson());
+        }
+        cursor.close();
 
+        //FILTROS EN COLSULTAS:
 
+        //generamos un documento usando el comando Filters.eq para filtar la información
+        // y mosntrándo solo el primer documento que conhincida
+
+        Document doc = colection.find(Filters.eq("nombre","Ana")).first();
+        try{
+            System.out.println("Localizado: "+doc.toJson());
+        }catch (NullPointerException e){
+            System.out.println("No se encuentra. Error en "+ e);
+        }
     }
-
-
 }
