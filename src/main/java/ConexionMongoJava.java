@@ -16,7 +16,7 @@ public class ConexionMongoJava {
     //selecionamos la coleccion
     MongoCollection<Document> collection= db.getCollection("amigos");
 
-    //Visualizar los datos de la colleción:
+    //VISUALIZACIONES:
 
     //-Creamos una lista con el contenido de la collección de mongo
     List<Document> consulta= collection.find().into(new ArrayList<Document>());
@@ -36,4 +36,7 @@ public class ConexionMongoJava {
                 " - "+amig.getString("telefono")+
                 " - "+ amig.get("nota"));
     }
+
+    //INSERCIONES:
+
 }
