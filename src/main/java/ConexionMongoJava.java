@@ -338,7 +338,7 @@ public class ConexionMongoJava {
 
         try {
             fic = new FileWriter(fiche);
-            BufferedReader ficheroBF = new BufferedReader(fic);
+            BufferedWriter ficheroBF = new BufferedWriter(fic);
             System.out.println("\n- Recorremos la colecion");
             List<Document> consulta = collection.find().into(new ArrayList<Document>());
 
